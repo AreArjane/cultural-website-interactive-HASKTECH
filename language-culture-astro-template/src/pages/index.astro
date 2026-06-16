@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Calendar from '../components/Calendar.astro';
+import PostCard from '../components/PostCard.astro';
+import { posts } from '../data/posts';
+---
+
+<BaseLayout>
+  <Header />
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow" data-language-1="Language · Culture · Community" data-language-2="Language 2: Language · Culture · Community">
+          Language · Culture · Community
+        </p>
+        <h1
+          data-language-1="A clean learning platform for language and culture"
+          data-language-2="Language 2: A clean learning platform for language and culture"
+        >
+          A clean learning platform for language and culture
+        </h1>
+        <p
+          data-language-1="This template shows how the organisation website can look before connecting real posts, members, courses, and event registration."
+          data-language-2="Language 2 placeholder: this template shows how the organisation website can look before connecting real posts, members, courses, and event registration."
+        >
+          This template shows how the organisation website can look before connecting real posts, members, courses, and event registration.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#events" data-language-1="View calendar" data-language-2="View calendar — L2">
+            View calendar
+          </a>
+          <a class="secondary-button" href="#posts" data-language-1="Latest posts" data-language-2="Latest posts — L2">
+            Latest posts
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="mini-card">
+          <span>01</span>
+          <strong data-language-1="Language classes" data-language-2="Language 2: Language classes">Language classes</strong>
+          <p data-language-1="Beginner-friendly lessons and practice groups." data-language-2="Language 2 placeholder: beginner-friendly lessons and practice groups.">
+            Beginner-friendly lessons and practice groups.
+          </p>
+        </div>
+        <div class="mini-card offset">
+          <span>02</span>
+          <strong data-language-1="Culture events" data-language-2="Language 2: Culture events">Culture events</strong>
+          <p data-language-1="Community evenings, talks, stories, and music." data-language-2="Language 2 placeholder: community evenings, talks, stories, and music.">
+            Community evenings, talks, stories, and music.
+          </p>
+        </div>
+        <div class="mini-card">
+          <span>03</span>
+          <strong data-language-1="Public posts" data-language-2="Language 2: Public posts">Public posts</strong>
+          <p data-language-1="News and updates launched directly on the main page." data-language-2="Language 2 placeholder: news and updates launched directly on the main page.">
+            News and updates launched directly on the main page.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-strip" aria-label="Main features">
+      <article>
+        <strong data-language-1="Courses" data-language-2="Courses — L2">Courses</strong>
+        <p data-language-1="A future area for course pages and registration." data-language-2="Language 2 placeholder: a future area for course pages and registration.">
+          A future area for course pages and registration.
+        </p>
+      </article>
+      <article>
+        <strong data-language-1="Events" data-language-2="Events — L2">Events</strong>
+        <p data-language-1="Calendar-ready structure for workshops and meetups." data-language-2="Language 2 placeholder: calendar-ready structure for workshops and meetups.">
+          Calendar-ready structure for workshops and meetups.
+        </p>
+      </article>
+      <article>
+        <strong data-language-1="Posts" data-language-2="Posts — L2">Posts</strong>
+        <p data-language-1="Homepage cards for announcements and culture articles." data-language-2="Language 2 placeholder: homepage cards for announcements and culture articles.">
+          Homepage cards for announcements and culture articles.
+        </p>
+      </article>
+    </section>
+
+    <section class="posts-section" id="posts">
+      <div class="section-heading">
+        <p class="eyebrow" data-language-1="Main page posts" data-language-2="Posts — L2ên rûpela sereke">
+          Main page posts
+        </p>
+        <h2 data-language-1="Latest updates" data-language-2="Language 2: Latest updates">
+          Latest updates
+        </h2>
+        <p
+          data-language-1="These cards show how posts can be launched on the homepage. Later, posts can come from a CMS."
+          data-language-2="Language 2 placeholder: these cards show how posts can be launched on the homepage. Later, posts can come from a CMS."
+        >
+          These cards show how posts can be launched on the homepage. Later, posts can come from a CMS.
+        </p>
+      </div>
+
+      <div class="post-grid">
+        {posts.map((post) => <PostCard post={post} />)}
+      </div>
+    </section>
+
+    <Calendar />
+
+    <section class="about-section" id="about">
+      <div>
+        <p class="eyebrow" data-language-1="About the organisation" data-language-2="About the organisation — L2">
+          About the organisation
+        </p>
+        <h2
+          data-language-1="Built for a flexible learning community"
+          data-language-2="Language 2: Built for a flexible learning community"
+        >
+          Built for a flexible learning community
+        </h2>
+      </div>
+      <p
+        data-language-1="The structure is intentionally simple. The design gives a professional first look while keeping the code easy to expand with course pages, login, event registration, membership, payments, or CMS-based posts."
+        data-language-2="Language 2 placeholder: the structure is intentionally simple. The design gives a professional first look while keeping the code easy to expand."
+      >
+        The structure is intentionally simple. The design gives a professional first look while keeping the code easy to expand with course pages, login, event registration, membership, payments, or CMS-based posts.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>logo</span>
+    <p data-language-1="Language & Culture Organisation Template" data-language-2="Language & Culture Organisation Template — L2">
+      Language & Culture Organisation Template
+    </p>
+  </footer>
+</BaseLayout>

@@ -1,0 +1,1 @@
+Replace the text 'logo' in Header.astro with an image such as /logo.png later if needed.
