@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import { designOptions, interactionPatterns } from '../../data/designOptions';
+---
+
+<BaseLayout title="Choose a Design — Language & Culture">
+  <Header />
+  <main>
+    <section class="design-gallery-hero">
+      <p class="eyebrow" data-language-1="Customer design choice" data-language-2="Customer design choice — L2">Customer design choice</p>
+      <h1 data-language-1="Choose how the same website content should look" data-language-2="Language 2: Choose how the same website content should look">Choose how the same website content should look</h1>
+      <p data-language-1="Every design path uses the same organisation content, posts, events, and calendar. Only the visual style changes." data-language-2="Language 2 placeholder: every path uses the same content, but the visual style changes.">
+        Every design path uses the same organisation content, posts, events, and calendar. Only the visual style changes.
+      </p>
+    </section>
+
+    <section class="design-gallery-grid" aria-label="Design styles">
+      {designOptions.map((design) => (
+        <a class={`design-option-card ${design.className}`} href={`/designs/${design.slug}`}>
+          <span>{design.name}</span>
+          <strong>{design.name}</strong>
+          <p>{design.description}</p>
+          <em data-language-1="Open design" data-language-2="Open design — L2">Open design</em>
+        </a>
+      ))}
+    </section>
+
+    <section class="interaction-patterns-section">
+      <div class="section-heading">
+        <p class="eyebrow" data-language-1="Interaction patterns" data-language-2="Interaction patterns — L2">Interaction patterns</p>
+        <h2 data-language-1="Patterns that can be combined with any design" data-language-2="Language 2: Patterns that can be combined with any design">Patterns that can be combined with any design</h2>
+        <p data-language-1="These are not separate visual themes. They are ways the user interacts with the site, and they can be added to any selected design." data-language-2="Language 2 placeholder: these are interaction methods, not separate visual themes, and can be used with any selected design.">
+          These are not separate visual themes. They are ways the user interacts with the site, and they can be added to any selected design.
+        </p>
+      </div>
+      <div class="interaction-pattern-grid">
+        {interactionPatterns.map((pattern) => (
+          <article>
+            <strong>{pattern.name}</strong>
+            <p>{pattern.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>
