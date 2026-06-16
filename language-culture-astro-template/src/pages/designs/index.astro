@@ -17,7 +17,7 @@ import { designOptions, interactionPatterns } from '../../data/designOptions';
 
     <section class="design-gallery-grid" aria-label="Design styles">
       {designOptions.map((design) => (
-        <a class={`design-option-card ${design.className}`} href={`/designs/${design.slug}`}>
+        <a class={`design-option-card ${design.className}`} href={`${base}designs/${design.slug}/`}>
           <span>{design.name}</span>
           <strong>{design.name}</strong>
           <p>{design.description}</p>

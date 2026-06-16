@@ -6,6 +6,9 @@ import PostCard from '../../components/PostCard.astro';
 import DesignSwitcher from '../../components/DesignSwitcher.astro';
 import { posts } from '../../data/posts';
 import { designOptions } from '../../data/designOptions';
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 
 export function getStaticPaths() {
   return designOptions.map((design) => ({ params: { slug: design.slug }, props: { design } }));
@@ -26,7 +29,7 @@ const { design } = Astro.props;
         </p>
         <div class="hero-actions">
           <a class="primary-button" href="#events" data-language-1="View calendar" data-language-2="View calendar — L2">View calendar</a>
-          <a class="secondary-button" href="/designs" data-language-1="Back to designs" data-language-2="Back to designs — L2">Back to designs</a>
+          <a class="secondary-button"  href={`${base}designs/`} data-language-1="Back to designs" data-language-2="Back to designs — L2">Back to designs</a>
         </div>
       </div>
       <aside class="design-info-card">

@@ -1,7 +1,12 @@
 ---
 import { designOptions } from '../data/designOptions';
+
 const { currentSlug = '' } = Astro.props;
 const currentDesign = designOptions.find((design) => design.slug === currentSlug);
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 ---
 
 <section class="design-switcher-panel" aria-label="Switch website design">
@@ -12,15 +17,25 @@ const currentDesign = designOptions.find((design) => design.slug === currentSlug
       The content, posts, and calendar stay the same. This control only changes the visual design preview.
     </p>
   </div>
+
   <div class="design-switcher-control">
     <label for="design-select" data-language-1="Design style" data-language-2="Design style — L2">Design style</label>
+
     <select id="design-select" data-design-select>
       {designOptions.map((design) => (
-        <option value={`/designs/${design.slug}`} selected={design.slug === currentSlug}>{design.name}</option>
+        <option value={`${base}designs/${design.slug}/`} selected={design.slug === currentSlug}>
+          {design.name}
+        </option>
       ))}
     </select>
-    <button type="button" class="switch-design-button" data-switch-design-button>Switch to selected design</button>
-    <a class="all-designs-link" href="/designs" data-language-1="Compare all designs" data-language-2="Compare all designs — L2">Compare all designs</a>
+
+    <button type="button" class="switch-design-button" data-switch-design-button>
+      Switch to selected design
+    </button>
+
+    <a class="all-designs-link" href={`${base}designs/`} data-language-1="Compare all designs" data-language-2="Compare all designs — L2">
+      Compare all designs
+    </a>
   </div>
 </section>
 
@@ -29,6 +44,7 @@ const currentDesign = designOptions.find((design) => design.slug === currentSlug
 <script is:inline>
   const designSelect = document.querySelector('[data-design-select]');
   const switchDesignButton = document.querySelector('[data-switch-design-button]');
+
   if (designSelect && switchDesignButton) {
     switchDesignButton.addEventListener('click', () => {
       window.location.href = designSelect.value;
